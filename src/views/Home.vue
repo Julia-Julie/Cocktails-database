@@ -1,6 +1,6 @@
 <template>
   <div class="home pa-6">
-    <app-input label="Enter a Cocktail" />
+    <app-input label="Enter the Cocktail" />
 
     <app-button
       v-bind="{ text: 'Add to list', elevation: 5 }"
