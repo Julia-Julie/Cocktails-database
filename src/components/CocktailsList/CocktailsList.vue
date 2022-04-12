@@ -1,5 +1,5 @@
 <template>
-  <section class="cocktails-list">
+  <section class="cocktails-list d-flex flex-wrap flex-column flex-sm-row my-4">
     <app-card v-for="(_, idx) in 6" :key="idx" />
   </section>
 </template>

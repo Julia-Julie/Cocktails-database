@@ -1,15 +1,30 @@
 <template>
-  <v-card class="mx-auto mb-6 bla" max-width="344">
+  <v-card class="mx-auto mb-6" max-width="344">
     <v-img
-      src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+      src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg  "
       height="200px"
     ></v-img>
 
-    <v-card-title class="mb-16 deep-purple accent-4">
-      Top western road trips
-    </v-card-title>
+    <v-card-title class="mb-18"> Margarita </v-card-title>
+    <div class="font-weight-light body-2 pl-4">
+      <b class="blue--text">Category:</b>
+      Cocktail glass
+    </div>
+    <div class="font-weight-light body-2 pl-4">
+      <b class="blue--text">Type of glass:</b>
+      Cocktail glass
+    </div>
 
-    <v-card-subtitle> 1,000 miles of wonder </v-card-subtitle>
+    <div class="subtitle-1 blue--text font-weight-bold pl-4 mt-4">
+      Method of cooking
+    </div>
+    <v-card-subtitle class="cut-text my-1">
+      Rub the rim of the glass with the lime slice to make the salt stick to it.
+      Take care to moisten only the outer rim and sprinkle the salt on it. The
+      salt should present to the lips of the imbiber and never mix into the
+      cocktail. Shake the other ingredients with ice, then carefully pour into
+      the glass."
+    </v-card-subtitle>
 
     <v-card-actions>
       <v-btn color="orange lighten-2" text> Explore </v-btn>
@@ -36,6 +51,7 @@
 <script>
 export default {
   name: "AppCard",
+  props: {},
   data: () => ({
     show: false,
   }),
@@ -47,4 +63,13 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.cut-text {
+  padding: 0 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</style>
