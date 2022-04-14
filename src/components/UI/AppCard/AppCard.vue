@@ -1,63 +1,78 @@
 <template>
   <v-card class="mx-auto mb-6" max-width="344">
-    <v-img
-      src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg  "
-      height="200px"
-    ></v-img>
+    <v-img :src="strDrinkThumb" height="200px"></v-img>
 
-    <v-card-title class="mb-18"> Margarita </v-card-title>
+    <v-card-title class="mb-18"> {{ strDrink }} </v-card-title>
     <div class="font-weight-light body-2 pl-4">
       <b class="blue--text">Category:</b>
-      Cocktail glass
+      {{ strCategory }}
     </div>
     <div class="font-weight-light body-2 pl-4">
       <b class="blue--text">Type of glass:</b>
-      Cocktail glass
+      {{ strGlass }}
     </div>
 
     <div class="subtitle-1 blue--text font-weight-bold pl-4 mt-4">
       Method of cooking
     </div>
     <v-card-subtitle class="cut-text my-1">
-      Rub the rim of the glass with the lime slice to make the salt stick to it.
-      Take care to moisten only the outer rim and sprinkle the salt on it. The
-      salt should present to the lips of the imbiber and never mix into the
-      cocktail. Shake the other ingredients with ice, then carefully pour into
-      the glass."
+      {{ strInstructions }}
     </v-card-subtitle>
 
     <v-card-actions>
-      <v-btn color="orange lighten-2" text> Explore </v-btn>
+      <v-btn color="orange lighten-2" text @click="exploreDrink(idx)">
+        Explore
+      </v-btn>
 
       <v-spacer></v-spacer>
+
+      <v-btn color="red lighten-2" text @click="deleteDrink(idx)">
+        delete
+      </v-btn>
     </v-card-actions>
-
-    <v-expand-transition>
-      <div v-show="show" class="mb-16">
-        <v-divider />
-
-        <v-card-text>
-          I'm a thing. But, like most politicians, he promised more than he
-          could deliver. You won't have time for sleeping, soldier, not with all
-          the bed making you'll be doing. Then we'll go with that data file!
-          Hey, you add a one and two zeros to that or we walk! You're going to
-          do his laundry? I've got to find a way to escape.
-        </v-card-text>
-      </div>
-    </v-expand-transition>
   </v-card>
 </template>
 
 <script>
 export default {
   name: "AppCard",
-  props: {},
+  inheritAttrs: false,
+  props: {
+    idx: {
+      type: Number,
+      default: 0,
+    },
+    strDrink: {
+      type: String,
+      default: "",
+    },
+    strCategory: {
+      type: String,
+      default: "",
+    },
+    strGlass: {
+      type: String,
+      default: "",
+    },
+    strInstructions: {
+      type: String,
+      default: "",
+    },
+    strDrinkThumb: {
+      type: String,
+      default: "",
+    },
+  },
   data: () => ({
     show: false,
   }),
   methods: {
-    handleClick() {
-      this.show = !this.show;
+    exploreDrink(idx) {
+      this.$router.push(`/drink/${idx}`);
+    },
+    deleteDrink(idx) {
+      // this.$emit("delete", { idx, strGlass: this.strGlass });
+      this.$emit("delete", idx);
     },
   },
 };

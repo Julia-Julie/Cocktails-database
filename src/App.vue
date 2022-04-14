@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app color="blue-grey accent-1" dark>
-      <div class="d-flex align-center">
+      <div class="d-flex align-center logo" @click="moveToMainPage">
         <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
@@ -32,5 +32,16 @@ export default {
   data: () => ({
     //
   }),
+  methods: {
+    moveToMainPage() {
+      this.$router.push("/");
+    },
+  },
 };
 </script>
+
+<style lang="scss" scoped>
+.logo {
+  cursor: pointer;
+}
+</style>
