@@ -20,10 +20,9 @@
     </v-card-subtitle>
 
     <v-card-actions>
-      <v-btn color="orange lighten-2" text @click="exploreDrink(idx)">
+      <v-btn color="orange lighten-2" text @click="setOpenedDrinkId(idDrink)">
         Explore
       </v-btn>
-
       <v-spacer></v-spacer>
 
       <v-btn color="red lighten-2" text @click="deleteDrink(idx)">
@@ -34,10 +33,15 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "AppCard",
-  inheritAttrs: false,
+  // inheritAttrs: false,
   props: {
+    idDrink: {
+      type: String,
+      default: "",
+    },
     idx: {
       type: Number,
       default: 0,
@@ -65,11 +69,13 @@ export default {
   },
   data: () => ({
     show: false,
+    dialog: false,
   }),
   methods: {
-    exploreDrink(idx) {
-      this.$router.push(`/drink/${idx}`);
-    },
+    ...mapActions(["setOpenedDrinkId"]),
+    // exploreDrink(idx) {
+    //   this.$router.push(`/drink/${idx}`);
+    // },
     deleteDrink(idx) {
       // this.$emit("delete", { idx, strGlass: this.strGlass });
       this.$emit("delete", idx);

@@ -7,20 +7,20 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     drinks: [],
+    openedDrinkId: "",
   },
   mutations: {
     drinksData(state, payload) {
       state.drinks = payload;
     },
     mutateList(state, payload) {
-      // console.log("state", state);
-      console.log("payload", payload);
-
       const deletedItem = state.drinks.splice(payload, 1);
-      console.log(deletedItem);
       state.drinks = state.drinks.filter((drink) => {
         return drink !== deletedItem;
       });
+    },
+    mutateOpenedDrinkId(state, payload) {
+      state.openedDrinkId = payload;
     },
   },
   actions: {
@@ -35,9 +35,25 @@ export default new Vuex.Store({
       }
     },
     deletedFromDrinks(ctx, payload) {
-      console.log(payload);
       ctx.commit("mutateList", payload);
     },
+    setOpenedDrinkId(context, payload) {
+      context.commit("mutateOpenedDrinkId", payload);
+    },
   },
-  getters: {},
+  getters: {
+    // getDrinkById: (state) => (id) =>
+    //   state.drinks.find(({ idDrink }) => idDrink === id),
+
+    getDrinkById(state) {
+      return (id) => {
+        return state.drinks.find(({ idDrink }) => {
+          return idDrink === id;
+        });
+      };
+    },
+    getOpenedDrinkId(state) {
+      return state.openedDrinkId;
+    },
+  },
 });
